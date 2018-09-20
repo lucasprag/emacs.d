@@ -45,12 +45,6 @@
   :ensure t
   :config)
 
-;; eyebrowse, a tmux like behavior
-;;(use-package eyebrowse
-;;  :ensure t
-;;  :init
-;;  (eyebrowse-mode t))
-
 (use-package neotree
   :ensure t
   :init
@@ -69,3 +63,15 @@
       (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
       (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
       (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
+
+;; eyebrowse, a tmux like behavior
+(use-package eyebrowse
+  :ensure t
+  :config
+  (eyebrowse-mode t))
+
+;; spacemacs-like mode line
+(use-package spaceline
+  :ensure t
+  :config
+  (spaceline-emacs-theme))

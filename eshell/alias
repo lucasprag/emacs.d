@@ -1,0 +1,13 @@
+alias be bundle exec $*
+alias emacs find-file $1
+alias g git $*
+alias ga git add $*
+alias gb git branch $*
+alias gco git checkout $*
+alias gs git status -s
+alias gss git status -s
+alias l ls $*
+alias la ls -a $*
+alias lh ls -l -h $*
+alias ll ls -l $*
+alias h heroku $*

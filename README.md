@@ -1,4 +1,4 @@
-Personal `.emacs.d`
+Personal `~/.emacs.d`
 ===================
 
 This is me trying emacs.

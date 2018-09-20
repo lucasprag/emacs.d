@@ -12,7 +12,6 @@
   (package-install 'use-package))
 (require 'use-package)
 
-;; Disable backup files
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 
