@@ -1,5 +1,10 @@
 ;; ----------------- keybindings -----------------
 
+(defun reload-emacs-config ()
+  "Reload emacs configs"
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+
 (use-package general
  :ensure t
  :config (general-define-key
@@ -8,32 +13,47 @@
  :non-normal-prefix "M-SPC"
 
  ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
- "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
  "SPC" '(helm-M-x :which-key "M-x")
 
- ;; Project
- "p"  '(:which-key "projects")
- "pp" '(helm-projectile :which-key "find project")
- "pf" '(helm-projectile-ag :which-key "find file")
- "pt" '(neotree-toggle :which-key "neotree")
+ ;; apps
+ "a"  '(:which-key "apps")
+ "ae" '(reload-emacs-config :which-key "reload emacs configs")
 
- ;; Files
+ ;; buffers
+ "b"  '(:which-key "buffers")
+ "bb" '(helm-projectile-switch-to-buffer :which-key "buffers list")
+ "bk" '(kill-current-buffer :which-key "kill")
+ "bp" '(switch-to-prev-buffer :which-key "prev")
+ "bn" '(switch-to-next-buffer :which-key "next")
+ "ba" '(crux-kill-other-buffers :which-key "kill others")
+
+ ;; files
  "f"  '(:which-key "files")
  "ff" '(find-file :which-key "find files")
  "fs" '(save-buffer :which-key "save file")
+ "fr" '(crux-rename-file-and-buffer :which-key "rename")
+ "fd" '(crux-delete-file-and-buffer :which-key "delete")
 
- ;; Buffers
- "b"  '(:which-key "buffers")
- "bb" '(helm-buffers-list :which-key "buffers list")
- "bk" '(kill-current-buffer :which-key "kill current bugffer")
+ ;; project
+ "p"  '(:which-key "projects")
+ "pp" '(helm-projectile-switch-project :which-key "switch project")
+ "pf" '(helm-projectile-find-file :which-key "find file")
+ "pr" '(helm-projectile-recentf :which-key "recent")
+ "ps" '(helm-projectile-ag :which-key "search")
+ "pt" '(neotree-toggle :which-key "neotree")
 
- ;; Window
+ ;; terminal
+ "t"  '(:which-key "terminal")
+ "te" '(eshell :which-key "open eshell")
+ "to" '(ansi-term :which-key "open zsh")
+
+ ;; window
  "w"  '(:which-key "windows")
  "w\\" '(split-window-right :which-key "split right")
  "w-" '(split-window-below :which-key "split bottom")
  "wk" '(delete-window :which-key "delete window")
 
- ;; Workspaces
+ ;; workspaces
  "s"  '(:which-key "workspaces")
  "sn" '(eyebrowse-create-window-config :which-key "new")
  "sl" '(eyebrowse-next-window-config :which-key "next")
@@ -41,11 +61,6 @@
  "sk" '(eyebrowse-close-window-config :which-key "kill")
  "sr" '(eyebrowse-rename-window-config :which-key "rename")
  "ss" '(eyebrowse-switch-window-config :which-key "switch interactively")
-
- ;; Terminal
- "t"  '(:which-key "terminal")
- "te" '(eshell :which-key "open eshell")
- "to" '(ansi-term :which-key "open zsh")
 ))
 
 ;; move between workspaces using ALT-h/l
@@ -66,3 +81,10 @@
 
 (add-hook 'emacs-startup-hook 'hack-to-bind-move-down)
 (add-hook 'change-major-mode-hook 'hack-to-bind-move-down)
+
+;; save file using CTRL-s
+(global-set-key (kbd "C-s") 'save-buffer)
+
+;; find files in project using CTRL-p
+(global-set-key (kbd "C-p") 'helm-projectile-find-file)
+

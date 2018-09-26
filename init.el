@@ -12,13 +12,10 @@
   (package-install 'use-package))
 (require 'use-package)
 
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave# files
-
 (add-to-list 'load-path "~/.emacs.d/settings")
 
-(load "ui.el")
 (load "packages.el")
+(load "preferences.el")
 (load "keybindings.el")
 (load "shell-integration.el")
 

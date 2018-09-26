@@ -1,4 +1,4 @@
-;; ----------------- packages -----------------
+; ----------------- packages -----------------
 
 (use-package helm
   :ensure t
@@ -34,16 +34,23 @@
   :config
   (evil-mode 1))
 
+;; theme
+(use-package planet-theme
+  :ensure t
+  :config
+  (load-theme 'planet t))
+
 (use-package projectile
   :ensure t
   :init
-  ;; (setq projectile-require-project-root nil)
+    (setq projectile-project-search-path '("~/Projects/fera" "~/Projects/labs"))
   :config
-  (projectile-mode 1))
+  (projectile-global-mode))
 
 (use-package helm-projectile
   :ensure t
-  :config)
+  :config
+  (helm-projectile-on))
 
 (use-package neotree
   :ensure t
@@ -70,8 +77,37 @@
   :config
   (eyebrowse-mode t))
 
+;; number windows so I can switch to windows using M-1/2/3/4/5
+(use-package window-numbering
+  :ensure t
+  :config
+  (window-numbering-mode t))
+
 ;; spacemacs-like mode line
 (use-package spaceline
   :ensure t
+  :init
+  (setq spaceline-minor-modes-p nil)
+  (setq spaceline-buffer-size-p nil)
+  (setq spaceline-buffer-modified-p nil)
+  (setq spaceline-version-control-p nil)
+  (setq spaceline-buffer-encoding-abbrev-p nil)
+  (setq spaceline-workspace-numbers-unicode t)
+  (setq spaceline-window-numbers-unicode t)
+  (setq powerline-default-separator nil)
   :config
   (spaceline-emacs-theme))
+
+;; save recent files to switch faster
+(use-package recentf
+  :config
+  (recentf-mode +1))
+
+(use-package dashboard
+  :ensure t
+  :init
+  (setq dashboard-startup-banner "settings/banner.txt")
+  (setq dashboard-items '((projects  . 5)
+                          (recents . 5)))
+  :config
+  (dashboard-setup-startup-hook))
