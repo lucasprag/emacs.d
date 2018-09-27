@@ -4,6 +4,7 @@ alias emacs find-file $1
 alias g git $*
 alias ga git add $*
 alias gb git branch $*
+alias gc git commit $*
 alias gco git checkout $*
 alias gs git status -s
 alias gss git status -s
