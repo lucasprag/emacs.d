@@ -28,3 +28,5 @@
 (setq require-final-newline t) ; Newline at end of file
 (global-auto-revert-mode t) ; revert buffers automatically when underlying files are changed externally
 
+; start emacs maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
