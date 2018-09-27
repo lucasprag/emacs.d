@@ -106,8 +106,7 @@
 (use-package dashboard
   :ensure t
   :init
-  (setq dashboard-startup-banner "settings/banner.txt")
   (setq dashboard-items '((projects  . 5)
-                          (recents . 5)))
+                          (recents . 10)))
   :config
   (dashboard-setup-startup-hook))
