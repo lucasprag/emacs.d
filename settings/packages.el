@@ -74,14 +74,10 @@
 ;; eyebrowse, a tmux like behavior
 (use-package eyebrowse
   :ensure t
+  :init
+  (setq eyebrowse-new-workspace t)
   :config
   (eyebrowse-mode t))
-
-;; number windows so I can switch to windows using M-1/2/3/4/5
-(use-package window-numbering
-  :ensure t
-  :config
-  (window-numbering-mode t))
 
 ;; spacemacs-like mode line
 (use-package spaceline
@@ -106,6 +102,7 @@
 (use-package dashboard
   :ensure t
   :init
+  (setq dashboard-startup-banner 'logo)
   (setq dashboard-items '((projects  . 5)
                           (recents . 10)))
   :config
