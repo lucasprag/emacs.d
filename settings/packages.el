@@ -3,7 +3,7 @@
 (use-package helm
   :ensure t
   :init
-  (setq default-directory "~/Projects"
+  (setq default-directory "~/Projects/fera"
    helm-M-x-fuzzy-match t
    helm-mode-fuzzy-match t
    helm-buffers-fuzzy-matching t
@@ -43,7 +43,8 @@
 (use-package projectile
   :ensure t
   :init
-    (setq projectile-project-search-path '("~/Projects/fera" "~/Projects/labs"))
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (setq projectile-project-search-path '("~/Projects/fera" "~/Projects/labs"))
   :config
   (projectile-global-mode))
 
@@ -72,14 +73,19 @@
       (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
 
 ;; eyebrowse, a tmux like behavior
-(use-package eyebrowse
-  :ensure t
-  :init
-  (setq eyebrowse-new-workspace t)
-  :config
-  (eyebrowse-mode t))
+;(use-package eyebrowse
+; :ensure t
+; :init
+; (setq eyebrowse-new-workspace t)
+; :config
+; (eyebrowse-mode t))
 
-;; spacemacs-like mode line
+(use-package perspective
+  :ensure t
+  :config
+  (persp-mode))
+
+; spacemacs-like mode line
 (use-package spaceline
   :ensure t
   :init
@@ -96,6 +102,7 @@
 
 ;; save recent files to switch faster
 (use-package recentf
+  :ensure t
   :config
   (recentf-mode +1))
 

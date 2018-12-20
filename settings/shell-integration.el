@@ -5,4 +5,3 @@
        (append
         (split-string-and-unquote path ":")
         exec-path)))
-
