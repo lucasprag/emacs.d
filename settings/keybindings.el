@@ -16,7 +16,7 @@
   ;; buffers
   "b"  '(:which-key "buffers")
   "bb" '(helm-projectile-switch-to-buffer :which-key "buffers list")
-  "bk" '(kill-current-buffer :which-key "kill")
+  "bd" '(kill-current-buffer :which-key "delete")
   "bp" '(switch-to-prev-buffer :which-key "prev")
   "bn" '(switch-to-next-buffer :which-key "next")
   "ba" '(crux-kill-other-buffers :which-key "kill others")
@@ -57,7 +57,7 @@
   "w"  '(:which-key "windows")
   "w\\" '(split-window-right :which-key "split right")
   "w-" '(split-window-below :which-key "split bottom")
-  "wq" '(delete-window :which-key "quit")
+  "wd" '(delete-window :which-key "delete")
 )
 
 ;; keybindings only on normal mode

@@ -38,7 +38,7 @@
   :ensure t
   :init
   (setq projectile-switch-project-action 'neotree-projectile-action)
-  (setq projectile-project-search-path '("~/Projects/fera" "~/Projects/labs"))
+  (setq projectile-project-search-path '("~/Projects/fera" "~/Projects/smile" "~/Projects/labs"))
   :config
   (projectile-global-mode))
 
@@ -66,6 +66,18 @@
       (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
       (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
 
+; workspaces
+(use-package persp-mode
+  :ensure t
+  :config
+  (persp-mode t))
+
+; give numbers to windows
+(use-package winum
+  :ensure t
+  :config
+  (winum-mode t))
+
 ; spacemacs-like mode line
 (use-package spaceline
   :ensure t
@@ -77,9 +89,9 @@
   (setq spaceline-buffer-encoding-abbrev-p nil)
   (setq spaceline-workspace-numbers-unicode t)
   (setq spaceline-window-numbers-unicode t)
-  (setq powerline-default-separator nil)
   :config
-  (spaceline-emacs-theme))
+  (spaceline-spacemacs-theme)
+  )
 
 ;; save recent files to switch faster
 (use-package recentf

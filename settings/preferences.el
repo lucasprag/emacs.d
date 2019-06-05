@@ -57,3 +57,6 @@
 
 ;; changes title bar to dark theme on macos
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
+
+;; avoid having two window numbers in the mode-line
+(setq-default winum-auto-setup-mode-line nil)
