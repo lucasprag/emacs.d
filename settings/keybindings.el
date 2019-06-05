@@ -6,7 +6,7 @@
   (load-file "~/.emacs.d/init.el"))
 
 (general-define-key
-  :states '(normal visual insert emacs treemacs)
+  :states '(normal visual insert emacs)
   :prefix "SPC"
   :non-normal-prefix "M-SPC"
 
@@ -37,13 +37,26 @@
   "fm" '(crux-rename-file-and-buffer :which-key "rename")
   "fd" '(crux-delete-file-and-buffer :which-key "delete")
 
+  ;; layouts
+  "l"  '(:which-key "layouts")
+  "ls" '(persp-switch :which-key "switch") ; query a perspective to switch or create
+  "lk" '(persp-remove-buffer :which-key "remove buffer") ; query a buffer to remove from current perspective
+  "ld" '(persp-kill :which-key "delete") ; query a perspective to kill
+  "lr" '(persp-rename :which-key "rename") ; rename current perspective
+  "la" '(persp-add-buffer :which-key "add buffer") ; query an open buffer to add to current perspective
+  "lg" '(persp-set-buffer :which-key "get buffer") ; add buffer to current perspective and remove it from all others
+
+  "ln" '(persp-next :which-key "next")
+  "lp" '(persp-prev :which-key "previous")
+
   ;; project
   "p"  '(:which-key "projects")
   "pp" '(helm-projectile-switch-project :which-key "switch project")
   "pf" '(helm-projectile-find-file :which-key "find file")
   "pr" '(helm-projectile-recentf :which-key "recent")
   "ps" '(helm-projectile-ag :which-key "search")
-  "pt" '(treemacs :which-key "tree")
+  "pt" '(neotree-toggle :which-key "tree")
+  "pe" '(neotree-projectile-action :which-key "reset tree")
 
   ;; emacs
   "e"  '(:which-key "emacs")
@@ -62,13 +75,13 @@
 
 ;; keybindings only on normal mode
 (general-define-key
-  :states '(normal treemacs)
+  :states '(normal)
   "C-s" 'save-buffer
   "s-s" 'save-buffer
   "C-q" 'delete-window
   "C-a" 'save-buffers-kill-emacs
 
-  ;; move between windows using CTRL-h/j/k/l
+  ;; move between windows using Alt-h/j/k/l
   "M-l" 'windmove-right
   "M-h" 'windmove-left
   "M-k" 'windmove-up
@@ -82,4 +95,18 @@
 
   ;; find files in project using command+p
   "s-p" 'helm-projectile-find-file
+
+  ;; move between layouts (aka perspectives) using Ctrl-h/l
+  "C-h" 'persp-next
+  "C-l" 'persp-prev
+
+  ;; split more easily
+  "s-\\" '(split-window-right :which-key "split right")
+  "s-\-" '(split-window-below :which-key "split bottom")
+
 )
+
+;; keybindings only on normal mode
+(general-define-key
+  :states '(neotree)
+  )

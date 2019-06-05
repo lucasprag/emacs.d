@@ -59,10 +59,5 @@
 (setq-default show-trailing-whitespace t)
 
 ;; changes title bar to dark theme on macos
-(add-to-list 'default-frame-alist '(ns-appearance . dark))
-
-;; avoid having two window numbers in the mode-line
-(setq-default winum-auto-setup-mode-line nil)
-
-;; don't use png icons on treemacs
-(setq-default treemacs-no-png-images t)
+;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
+(add-to-list 'default-frame-alist '(ns-appearance))

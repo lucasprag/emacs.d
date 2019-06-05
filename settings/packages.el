@@ -42,8 +42,7 @@
 (use-package projectile
   :ensure t
   :init
-  (setq projectile-switch-project-action 'neotree-projectile-action)
-  (setq projectile-project-search-path '("~/Projects/fera" "~/Projects/smile" "~/Projects/labs"))
+  (setq projectile-project-search-path '("~/Projects/fera" "~/Projects/smile" "~/Projects/maple-labs"))
   :config
   (projectile-global-mode))
 
@@ -52,11 +51,23 @@
   :config
   (helm-projectile-on))
 
-; treemacs is waaay better than neotree
-(use-package treemacs
+(use-package neotree
   :ensure t
+  :init
   :config
-  (treemacs-follow-mode t))
+  (setq neo-theme 'nerd)
+  (add-hook 'neotree-mode-hook
+    (lambda ()
+      (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+      (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
+      (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
+      (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
+      (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+      (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+      (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+      (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+      (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
+      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
 
 (use-package treemacs-evil
   :after treemacs evil
@@ -69,32 +80,45 @@
 ; workspaces
 (use-package persp-mode
   :ensure t
+  :init
   :config
   (persp-mode t))
 
-; give numbers to windows
-(use-package winum
+(use-package doom-themes
   :ensure t
   :config
-  (winum-mode t))
+  (load "doom-darkest-night-theme.el"))
 
-; spacemacs-like mode line
-(use-package spaceline
+(use-package doom-modeline
   :ensure t
-  :init
-  (setq spaceline-minor-modes-p nil)
-  (setq spaceline-buffer-size-p nil)
-  (setq spaceline-buffer-modified-p nil)
-  (setq spaceline-version-control-p nil)
-  (setq spaceline-buffer-encoding-abbrev-p nil)
-  (setq spaceline-workspace-numbers-unicode t)
-  (setq spaceline-window-numbers-unicode t)
   :config
-  (spaceline-spacemacs-theme)
-  )
+  (setq doom-modeline-height 20)
+  (setq doom-modeline-buffer-encoding nil)
+  (setq doom-modeline-persp-name t)
+  :hook (after-init . doom-modeline-mode))
 
-;; save recent files to switch faster
+; save recent files to switch faster
 (use-package recentf
   :ensure t
   :config
   (recentf-mode t))
+
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode)))
+
+(use-package css-mode
+  :ensure nil
+  :config (setq-default css-indent-offset 2))
+
+(use-package scss-mode
+  :ensure nil
+  :preface
+  (defun me/scss-set-comment-style ()
+    (setq-local comment-end "")
+    (setq-local comment-start "//"))
+  :mode ("\\.sass\\'" "\\.scss\\'")
+  :hook (scss-mode . me/scss-set-comment-style))
