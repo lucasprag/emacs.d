@@ -15,6 +15,7 @@
 (column-number-mode 1)
 
 ;; disable the annoying bell ring
+(setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 
 ;; stop creating backup~ files
@@ -43,3 +44,16 @@
 
 ; enable line numbers
 (global-linum-mode t)
+
+;; Don't generate buffer change files
+;; The files that are: .#something.rb
+(setq create-lockfiles nil)
+
+;; add a little spacing between each line
+(setq-default line-spacing 3)
+
+;; show trailing spaces as red
+(setq-default show-trailing-whitespace t)
+
+;; changes title bar to dark theme on macos
+(add-to-list 'default-frame-alist '(ns-appearance . dark))

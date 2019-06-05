@@ -5,5 +5,7 @@ eshell/history
 eshell/lastdir
 url/
 auto-save-list/
-projectile-bookmarks.eld
 recentf
+
+projectile.cache
+projectile-bookmarks.eld

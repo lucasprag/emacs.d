@@ -19,7 +19,7 @@
    helm-autoresize-max-height 0
    helm-autoresize-min-height 20)
    :config
-   (helm-mode 1))
+   (helm-mode t))
 
 (use-package which-key
   :ensure t
@@ -27,12 +27,12 @@
   (setq which-key-separator " ")
   (setq which-key-prefix-prefix "+")
   :config
-  (which-key-mode 1))
+  (which-key-mode t))
 
 (use-package evil
   :ensure t
   :config
-  (evil-mode 1))
+  (evil-mode t))
 
 (use-package projectile
   :ensure t
@@ -85,14 +85,16 @@
 (use-package recentf
   :ensure t
   :config
-  (recentf-mode +1))
+  (recentf-mode t))
 
 (use-package dashboard
   :ensure t
   :init
   (setq dashboard-startup-banner 'logo)
-  (setq dashboard-items '((projects  . 5)
-                          (recents . 10)))
+  (setq dashboard-items '((recents . 10)
+                          (projects  . 5)))
   :config
   (dashboard-setup-startup-hook))
 
+(use-package general
+ :ensure t)
