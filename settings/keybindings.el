@@ -105,8 +105,3 @@
   "s-\-" '(split-window-below :which-key "split bottom")
 
 )
-
-;; keybindings only on normal mode
-(general-define-key
-  :states '(neotree)
-  )
