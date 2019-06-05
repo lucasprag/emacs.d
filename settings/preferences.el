@@ -59,5 +59,4 @@
 (setq-default show-trailing-whitespace t)
 
 ;; changes title bar to dark theme on macos
-;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
-(add-to-list 'default-frame-alist '(ns-appearance))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
