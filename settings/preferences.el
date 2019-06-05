@@ -30,6 +30,9 @@
 ;; don't use tabs to indent
 (setq-default indent-tabs-mode nil)
 
+;; turn off autosaving
+(setq auto-save-default nil)
+
 ;; but maintain correct appearance
 (setq-default tab-width 2)
 
@@ -60,3 +63,6 @@
 
 ;; avoid having two window numbers in the mode-line
 (setq-default winum-auto-setup-mode-line nil)
+
+;; don't use png icons on treemacs
+(setq-default treemacs-no-png-images t)

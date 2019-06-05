@@ -21,6 +21,7 @@
    :config
    (helm-mode t))
 
+; shows a windows with keybindins
 (use-package which-key
   :ensure t
   :init
@@ -28,6 +29,10 @@
   (setq which-key-prefix-prefix "+")
   :config
   (which-key-mode t))
+
+; nice way of defining keybindings
+(use-package general
+ :ensure t)
 
 (use-package evil
   :ensure t
@@ -47,24 +52,19 @@
   :config
   (helm-projectile-on))
 
-(use-package neotree
+; treemacs is waaay better than neotree
+(use-package treemacs
   :ensure t
-  :init
   :config
-  (setq neo-theme 'nerd)
-  (setq projectile-switch-project-action 'neotree-projectile-action)
-  (add-hook 'neotree-mode-hook
-    (lambda ()
-      (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-      (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
-      (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
-      (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
-      (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
-      (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
-      (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
-      (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-      (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
-      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
+  (treemacs-follow-mode t))
+
+(use-package treemacs-evil
+  :after treemacs evil
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
 
 ; workspaces
 (use-package persp-mode
@@ -98,15 +98,3 @@
   :ensure t
   :config
   (recentf-mode t))
-
-(use-package dashboard
-  :ensure t
-  :init
-  (setq dashboard-startup-banner 'logo)
-  (setq dashboard-items '((recents . 10)
-                          (projects  . 5)))
-  :config
-  (dashboard-setup-startup-hook))
-
-(use-package general
- :ensure t)

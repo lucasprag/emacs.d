@@ -6,7 +6,7 @@
   (load-file "~/.emacs.d/init.el"))
 
 (general-define-key
-  :states '(normal visual insert emacs)
+  :states '(normal visual insert emacs treemacs)
   :prefix "SPC"
   :non-normal-prefix "M-SPC"
 
@@ -43,7 +43,7 @@
   "pf" '(helm-projectile-find-file :which-key "find file")
   "pr" '(helm-projectile-recentf :which-key "recent")
   "ps" '(helm-projectile-ag :which-key "search")
-  "pt" '(neotree-toggle :which-key "neotree")
+  "pt" '(treemacs :which-key "tree")
 
   ;; emacs
   "e"  '(:which-key "emacs")
@@ -62,7 +62,7 @@
 
 ;; keybindings only on normal mode
 (general-define-key
-  :states '(normal)
+  :states '(normal treemacs)
   "C-s" 'save-buffer
   "s-s" 'save-buffer
   "C-q" 'delete-window
@@ -76,6 +76,9 @@
 
   ;; switch buffers
   ";" 'helm-projectile-switch-to-buffer
+
+  ;; recent
+  "s-e" 'helm-recentf
 
   ;; find files in project using command+p
   "s-p" 'helm-projectile-find-file
