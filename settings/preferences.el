@@ -1,4 +1,4 @@
-;; ----------------- UI -----------------
+;; ----------------- preferences -----------------
 ;; minimal UI
 (scroll-bar-mode -1)
 (tool-bar-mode   -1)
@@ -14,19 +14,32 @@
 ;; show column number on mode line
 (column-number-mode 1)
 
-;; ----------------- settings -----------------
+;; disable the annoying bell ring
+(setq ring-bell-function 'ignore)
 
-(setq ring-bell-function 'ignore) ; disable the annoying bell ring
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave# files
+;; stop creating backup~ files
+(setq make-backup-files nil)
 
-(fset 'yes-or-no-p 'y-or-n-p) ; enable y/n answers
+;; stop creating #autosave# files
+(setq auto-save-default nil)
 
-(setq-default indent-tabs-mode nil) ; don't use tabs to indent
-(setq-default tab-width 2) ; but maintain correct appearance
+;; enable y/n answers
+(fset 'yes-or-no-p 'y-or-n-p)
 
-(setq require-final-newline t) ; Newline at end of file
-(global-auto-revert-mode t) ; revert buffers automatically when underlying files are changed externally
+;; don't use tabs to indent
+(setq-default indent-tabs-mode nil)
+
+;; but maintain correct appearance
+(setq-default tab-width 2)
+
+;; newline at end of file
+(setq require-final-newline t)
+
+; revert buffers automatically when underlying files are changed externally
+(global-auto-revert-mode t)
 
 ; start emacs maximized
 ;(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+; enable line numbers
+(global-linum-mode t)

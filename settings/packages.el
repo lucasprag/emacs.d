@@ -3,7 +3,7 @@
 (use-package helm
   :ensure t
   :init
-  (setq default-directory "~/Projects/fera"
+  (setq default-directory "~/Projects"
    helm-M-x-fuzzy-match t
    helm-mode-fuzzy-match t
    helm-buffers-fuzzy-matching t
@@ -33,12 +33,6 @@
   :ensure t
   :config
   (evil-mode 1))
-
-;; theme
-(use-package planet-theme
-  :ensure t
-  :config
-  (load-theme 'planet t))
 
 (use-package projectile
   :ensure t
@@ -72,19 +66,6 @@
       (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
       (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
 
-;; eyebrowse, a tmux like behavior
-;(use-package eyebrowse
-; :ensure t
-; :init
-; (setq eyebrowse-new-workspace t)
-; :config
-; (eyebrowse-mode t))
-
-(use-package perspective
-  :ensure t
-  :config
-  (persp-mode))
-
 ; spacemacs-like mode line
 (use-package spaceline
   :ensure t
@@ -114,3 +95,4 @@
                           (recents . 10)))
   :config
   (dashboard-setup-startup-hook))
+

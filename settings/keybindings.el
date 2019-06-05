@@ -15,11 +15,7 @@
  ;; "/"   '(counsel-rg :which-key "ripgrep") ; You'll need counsel package for this
  "SPC" '(helm-M-x :which-key "M-x")
 
- ;; Apps
- "a"  '(:which-key "apps")
- "ae" '(reload-emacs-config :which-key "reload emacs configs")
-
- ;; Buffers
+ ;; buffers
  "b"  '(:which-key "buffers")
  "bb" '(helm-projectile-switch-to-buffer :which-key "buffers list")
  "bk" '(kill-current-buffer :which-key "kill")
@@ -27,14 +23,16 @@
  "bn" '(switch-to-next-buffer :which-key "next")
  "ba" '(crux-kill-other-buffers :which-key "kill others")
 
- ;; Files
+ ;"j"  '(:which-key "jump")
+
+ ;; files
  "f"  '(:which-key "files")
  "ff" '(find-file :which-key "find files")
  "fs" '(save-buffer :which-key "save file")
  "fr" '(crux-rename-file-and-buffer :which-key "rename")
  "fd" '(crux-delete-file-and-buffer :which-key "delete")
 
- ;; Project
+ ;; project
  "p"  '(:which-key "projects")
  "pp" '(helm-projectile-switch-project :which-key "switch project")
  "pf" '(helm-projectile-find-file :which-key "find file")
@@ -42,50 +40,38 @@
  "ps" '(helm-projectile-ag :which-key "search")
  "pt" '(neotree-toggle :which-key "neotree")
 
- ;; Terminal
- "t"  '(:which-key "terminal")
- "te" '(eshell :which-key "open eshell")
- "to" '(ansi-term :which-key "open zsh")
+ ;; emacs
+ "e"  '(:which-key "emacs")
+ "er" '(reload-emacs-config :which-key "reload configs")
+ "eq" '(kill-emacs :which-key "quit")
 
- ;; Window
+ ;; toggles
+ "T"  '(:which-key "toggles")
+
+ ;; window
  "w"  '(:which-key "windows")
  "w\\" '(split-window-right :which-key "split right")
  "w-" '(split-window-below :which-key "split bottom")
- "wk" '(delete-window :which-key "delete window")
-
- ;; Layout
- "l"  '(:which-key "layout")
- "ln" '(eyebrowse-create-window-config :which-key "new")
- "ll" '(persp-next :which-key "next")
- "lh" '(persp-prev :which-key "prev")
- "lk" '(persp-kill :which-key "kill")
- "lr" '(persp-rename :which-key "rename")
- "ls" '(persp-switch :which-key "switch")
- "lL" '(persp-switch-last :which-key "last")
+ "wq" '(delete-window :which-key "quit")
 ))
 
-;; move between workspaces using ALT-h/l
-(global-set-key (kbd "M-h") 'eyebrowse-prev-window-config)
-(global-set-key (kbd "M-l") 'eyebrowse-next-window-config)
-
 ;; move between windows using CTRL-h/j/k/l
-(global-set-key (kbd "C-l") 'windmove-right)
-(global-set-key (kbd "C-h") 'windmove-left)
-(global-set-key (kbd "C-k") 'windmove-up)
-;(global-set-key (kbd "C-j") 'windmove-down) ; WHY THIS DOESN'T WORK?
-
-(defun hack-to-bind-move-down ()
-  "Hack to bind C-j to windmove-down"
-  (interactive)
-  (local-set-key (kbd "C-j") 'windmove-down)
- )
-
-(add-hook 'emacs-startup-hook 'hack-to-bind-move-down)
-(add-hook 'change-major-mode-hook 'hack-to-bind-move-down)
+(global-set-key (kbd "M-l") 'windmove-right)
+(global-set-key (kbd "M-h") 'windmove-left)
+(global-set-key (kbd "M-k") 'windmove-up)
+(global-set-key (kbd "M-j") 'windmove-down)
 
 ;; save file using CTRL-s
 (global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "s-s") 'save-buffer)
+(global-set-key (kbd "C-q") 'delete-window)
+(global-set-key (kbd "C-a") 'save-buffers-kill-emacs)
 
-;; find files in project using CTRL-p
-(global-set-key (kbd "C-p") 'helm-projectile-find-file)
+;; switch buffers
+(global-set-key (kbd ";") 'helm-projectile-switch-to-buffer)
+
+
+;; find files in project using command+p
+(global-set-key (kbd "s-p") 'helm-projectile-find-file)
+
 
